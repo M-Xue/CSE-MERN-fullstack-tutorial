@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 
 const app = express();
-const port = 3000;
+const port = 5000;
 
 async function main() {
     await mongoose.connect('mongodb+srv://m-xue:mongodbpassword@cluster0.uwy7p.mongodb.net/cse-fullstack-guide?retryWrites=true&w=majority');

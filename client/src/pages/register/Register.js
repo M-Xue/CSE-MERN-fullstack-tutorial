@@ -30,20 +30,25 @@ export default function Register() {
     // console.log(response);
 
 
-    // console.log(JSON.stringify(newUserData));
+    // const response = await axios({
+    //   method: 'post',
+    //   url: '/users/register',
+    //   data: newUserData
+    // });
+    // console.log(response);
 
 
+    const response1 = await fetch('/users/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUserData) 
+    });
+    const returnData = await response1.json();
+    console.log(returnData);
 
-    // const response1 = await fetch('http://127.0.0.1:5000/users/register', {
-    //   method: 'POST',
-    //   mode: 'no-cors',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(newUserData) 
-    // })
-
-    // console.log(response1.json());
+    
   }
 
   return (

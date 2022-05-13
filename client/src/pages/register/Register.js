@@ -62,6 +62,7 @@ export default function Register() {
             <textarea placeholder='Describe yourself!' required onChange={e=>setDescription(e.target.value)}/>
             <button type='submit'>Register</button>
         </form>
+        <button>Login</button>
     </div>
   )
 }

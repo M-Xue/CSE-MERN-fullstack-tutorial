@@ -55,7 +55,7 @@ export default function Login() {
             <input type="password" placeholder='Password' required onChange={e=>setPassword(e.target.value)}/>
             <button type='submit'>Login</button>
       </form>
-
+      <button>Register</button>
     </div>
   )
 }

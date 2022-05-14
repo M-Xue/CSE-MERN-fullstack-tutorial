@@ -6,11 +6,15 @@ const router = express.Router();
 router.post('/login', async (req, res) => {
     try {
         const user = await User.findOne({ username: req.body.username });
-        !user && res.status(404).json({message: "User not found."});
-        (user.password !== req.body.password) && res.status(403).json({message: "Incorrect password."});
-
-        const { password, ...others } = user._doc;
-        res.status(200).json(others);
+        if (!user) {
+            res.status(404).json({message: "User not found."});
+        } else if (user.password !== req.body.password) {
+            res.status(403).json({message: "Incorrect password."});
+        } else {
+            const { password, ...others } = user._doc;
+            res.status(200).json(others);
+        }
+        
     } catch (err) {
         res.status(400).json({message: err.message})
     }

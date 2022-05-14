@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import './login.css'
-import axios from 'axios';
+// import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-
+  let navigate = useNavigate();
   
   async function handleSubmit(e) {
     e.preventDefault();
@@ -38,10 +39,9 @@ export default function Login() {
       },
       body: JSON.stringify(loginData) 
     })
-    // const returnData = await loginResponse.json();
-    // console.log(returnData);
-    console.log(loginResponse.status)
-
+    const returnData = await loginResponse.json();
+    console.log(returnData);
+    // console.log(loginResponse.status);
 
   };
 
@@ -55,7 +55,7 @@ export default function Login() {
             <input type="password" placeholder='Password' required onChange={e=>setPassword(e.target.value)}/>
             <button type='submit'>Login</button>
       </form>
-      <button>Register</button>
+      <button onClick={() => navigate('/register')}>Register</button>
     </div>
   )
 }

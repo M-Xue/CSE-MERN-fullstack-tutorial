@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './register.css'
-import axios from 'axios';
+// import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
 
@@ -11,7 +12,7 @@ export default function Register() {
   const [password, setPassword] = useState('')
   const [description, setDescription] = useState('')
 
-
+  let navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -48,7 +49,9 @@ export default function Register() {
     const returnData = await response1.json();
     console.log(returnData);
 
-    
+    if (response1.status === 200) {
+      navigate('/')
+    }
   }
 
   return (
@@ -62,7 +65,7 @@ export default function Register() {
             <textarea placeholder='Describe yourself!' required onChange={e=>setDescription(e.target.value)}/>
             <button type='submit'>Register</button>
         </form>
-        <button>Login</button>
+      <button onClick={() => navigate('/')}>Login</button>
     </div>
   )
 }
